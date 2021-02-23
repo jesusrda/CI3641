@@ -1,0 +1,1 @@
+function x=f(n);x=floor(log2(nchoosek(fibonacci(n+1),fibonacci(n))))
