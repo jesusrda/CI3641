@@ -1,5 +1,6 @@
 class Ejercicio1b {
 
+    // Factorial
     public static int Fact(int n) {
         
         if (n == 0) 
@@ -8,6 +9,7 @@ class Ejercicio1b {
         return n*Fact(n-1);
     }
 
+    // Producto de Matrices
     public static int[][] Prod(int[][] A,
                                int[][] B,
                                int N,
