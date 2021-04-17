@@ -1,0 +1,5 @@
+-- Evaluación aplicativa
+takeWhile (<=3) (genA 1)
+takeWhile (<=3) (Rama 1 (genA 2) (genA 2))
+takeWhile (<=3) (Rama 1 (Rama 2 (genA 3) (genA 4)) (Rama 2 (genA 3) (genA 4)))
+-- Al igual que la anterior, el programa no termina

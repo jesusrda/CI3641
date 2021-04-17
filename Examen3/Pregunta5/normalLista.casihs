@@ -1,0 +1,29 @@
+-- Evaluación Normal
+takeWhile (<=3) (gen 1)
+foldr (\a r -> if (<= 3) a then a : r else []) [] (gen 1)
+foldr (\a r -> if (<= 3) a then a : r else []) [] (1 : gen (1+1))
+(\a r -> if (<= 3) a then a : r else []) 1 $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1))
+(\r -> if (<= 3) 1 then 1 : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1))
+if (<= 3) 1 then 1 : foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1)) else []
+1 : foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1))
+1 : foldr (\a r -> if (<= 3) a then a : r else []) [] ((1+1) : gen (1+1+1))
+1 : (\a r -> if (<= 3) a then a : r else []) (1+1) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1))
+1 : (\r -> if (<= 3) (1+1) then (1+1) : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1))
+1 : (\r -> if (<= 3) 2 then 2 : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1))
+1 : if (<= 3) 2 then 2 : foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1)) else []
+1 : 2 : foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1))
+1 : 2 : foldr (\a r -> if (<= 3) a then a : r else []) [] ((1+1+1) : gen (1+1+1+1))
+1 : 2 : (\a r -> if (<= 3) a then a : r else []) (1+1+1) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1+1))
+1 : 2 : (\r -> if (<= 3) (1+1+1) then (1+1+1) : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1+1))
+1 : 2 : (\r -> if (<= 3) 3 then 3 : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1+1))
+1 : 2 : if (<= 3) 3 then 3 : foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1+1)) else []
+1 : 2 : 3 : foldr (\a r -> if (<= 3) a then a : r else []) [] (gen (1+1+1+1))
+1 : 2 : 3 : foldr (\a r -> if (<= 3) a then a : r else []) [] ((1+1+1+1) : gen(1+1+1+1+1))
+1 : 2 : 3 : (\a r -> if (<= 3) a then a : r else []) (1+1+1+1) $ foldr (\a r -> if (<= 3) a then a : r else []) [] gen(1+1+1+1+1)
+1 : 2 : 3 : (\r -> if (<= 3) (1+1+1+1) then (1+1+1+1) : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] gen(1+1+1+1+1)
+1 : 2 : 3 : (\r -> if (<= 3) 4 then 4 : r else []) $ foldr (\a r -> if (<= 3) a then a : r else []) [] gen(1+1+1+1+1)
+1 : 2 : 3 : if (<= 3) 4 then 4 : foldr (\a r -> if (<= 3) a then a : r else []) [] gen(1+1+1+1+1) else []
+1 : 2 : 3 : []
+1 : 2 : [3]
+1 : [2, 3]
+[1, 2, 3]

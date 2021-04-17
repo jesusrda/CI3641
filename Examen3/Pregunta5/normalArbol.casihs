@@ -1,0 +1,21 @@
+-- Evaluación normal
+takeWhile (<=3) (genA 1)
+foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA 1)
+foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (Rama 1 (genA (1+1)) (genA (1*2)))
+(\a i d -> if (<=3) a then Rama a i d else Hoja) 1 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+(\i d -> if (<=3) 1 then Rama 1 i d else Hoja) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+if (<=3) 1 then Rama 1 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2))) else Hoja
+Rama 1 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (Rama (1+1) (genA (1+1+1)) (genA (1+1)*2))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 ((\a i d -> if (<=3) a then Rama a i d else Hoja) (1+1) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1+1))) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1)*2))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 ((\i d -> if (<=3) (1+1) then Rama (1+1) i d else Hoja) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1+1))) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1)*2))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 ((\i d -> if (<=3) 2 then Rama 2 i d else Hoja) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1+1))) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1)*2))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 (if (<=3) 2 then Rama 2 ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1+1))) ((\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1)*2))) else Hoja (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+Rama 1 (Rama 2 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1)*2))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)))
+
+-- Aplicando lo mismo a la rama derecha, obtenemos
+Rama 1 (Rama 2 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1+1)*2))) (Rama 2 (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2+1))) (foldA (\a i d -> if (<=3) a then Rama a i d else Hoja) Hoja (genA (1*2)*2)))
+
+-- Reduciendo las ramas internas, obtenemos (las líneas quedarían demasiado largas para aplicar todos los pasos)
+Rama 1 (Rama 2 (Rama 3 Hoja Hoja) Hoja) (Rama 2 (Rama 3 Hoja Hoja) Hoja)

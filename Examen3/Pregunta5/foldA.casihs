@@ -1,0 +1,3 @@
+foldA :: (a -> b -> b -> b) -> b -> Arbol a -> b
+foldA _ e Hoja = e
+foldA f e (Rama x left right) = f x (foldA f e left) (foldA f e right)
